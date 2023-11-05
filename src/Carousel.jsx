@@ -23,7 +23,6 @@ class Carousel extends Component {
           {images.map((photo, index) => (
             // eslint-disable-next-line
             <img
-              onClick={this.handleIndexClick}
               data-index={index}
               key={photo}
               src={photo}
