@@ -7,9 +7,6 @@ const Details = () => {
   const { id } = useParams();
   const results = useQuery(["details", id], fetchPet);
 
-  if (results.isError) {
-    return <h2>Oh No Error</h2>;
-  }
   if (results.isLoading) {
     return (
       <div className="loading-pane">
@@ -19,14 +16,13 @@ const Details = () => {
   }
 
   const pet = results.data.pets[0];
+
   return (
     <div className="details">
       <Carousel images={pet.images} />
       <div>
         <h1>{pet.name}</h1>
-        <h2>
-          {pet.animal} - {pet.breed} - {pet.city}, {pet.state}
-        </h2>
+        <h2>{`${pet.animal} — ${pet.breed} — ${pet.city}, ${pet.state}`}</h2>
         <button>Adopt {pet.name}</button>
         <p>{pet.description}</p>
       </div>
